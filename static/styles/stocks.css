@@ -1,0 +1,44 @@
+:root{
+    --mint-cream : #F1F7ED;
+    --msu-green : #243E36;
+    --forest-green : #7CA982;
+    --nyanza : #E0EEC6;
+    --gold : #C2A83E;
+    --white: #fff;
+    --black : #212529;
+}
+
+*{
+    padding : 0;
+    margin : 0;
+    font-size : 16px;
+}
+
+.navbar{
+    background-color: var(--nyanza);
+}
+
+body{
+    min-height: 100vh;
+    background-color: var(--mint-cream);
+}
+
+.w100{
+    width : 100%;
+}
+
+.search-btn{
+    width : 25% !important;
+}
+.search-input{
+    width : 65% !important;
+}
+
+@media all and (max-width: 500px){
+    .search-btn{
+        width : 30% !important;
+    }
+    .search-input{
+        width : 60% !important;
+    }
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Price Indicator</title>
+    <link rel="stylesheet" href="../static/styles/stocks.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <script src="../static/scripts/stocks.js"></script>
+</head>
+
+<body>
+    <nav class="navbar d-flex justify-content-between">
+        <h2>Logo</h2>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Hello, Hrithik!
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Logout</a>
+            </div>
+        </div>
+    </nav>
+    <div class="body-content d-flex justify-content-around">
+        <div style="width: 70%">
+            <div class="w100 search-feild my-3">
+                <form class="d-flex justify-content-between my-2 my-lg-0">
+                    <input class="form-control mr-sm-2 search-input" type="search"
+                        placeholder="Search With Stock Name ....." aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0 search-btn" type="submit">Search</button>
+                </form>
+            </div>
+
+            <table class="table table-striped mt-4">
+                <thead>
+                    <tr>
+                        <th class="text-center" scope="col">Status</th>
+                        <th class="text-center" scope="col">Stock Name</th>
+                        <th class="text-center" scope="col">Stock Symbol</th>
+                        <th class="text-center" scope="col">Stock Industry</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for stock in stocks %}
+                    <tr>
+                        <th class="text-center" scope="row">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            </div>
+                        </th>
+                        <td class="text-center">{% stock.name %}</td>
+                        <td class="text-center">{% stock.symbol %}</td>
+                        <td class="text-center"> {% stock.industry %}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

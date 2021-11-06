@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Price Indicator</title>
+    <link rel="stylesheet" href="../static/styles/index.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <script src="../static/scripts/index.js"></script>
+
+</head>
+
+<body>
+    <div class="main  d-flex justify-content-around">
+        <div class="">
+            <div class="main-content" id="mainContent" #mainContent>
+                <h1 class="heading">STOCK PRICE NOTIFIER</h1>
+                <p class="sub-heading">GET LATEST STOCK PRICE ALERTS + NEWS AT YOUR FINGER TIPS</p>
+                <button onclick="getStarted()" id="getStarted" class="btn btn--white mt-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        Get Started
+                        <img class="btn-icon" src="../static/images/arrow-right-solid.svg">
+                    </div>
+                </button>
+            </div>
+        </div>
+        <div class="dialog">
+            <form id="loginForm" class="display-none form-display">
+                <div class="text-center">
+                    <h2 class="login-heading" id="loginRegisterHeading">Login</h2>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary w-50">Login</button>
+                    <p class="mt-2">Don't have an account? Create <a onclick="showRegisterForm()"
+                            href="javascript:void(0)">here</a></p>
+                </div>
+            </form>
+
+            <form class="form-display" id="registerForm" action="/register" method="POST">
+                <h2 class="login-heading" id="loginRegisterHeading">Register</h2>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Full Name</label>
+                    <input type="text" name="fullname" class="form-control" id="name">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input type="email" name="email" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword2" class="form-label">Confirm Password</label>
+                    <input type="password" name="cpassword" class="form-control" id="exampleInputPassword2">
+                </div>
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary w-50">Sign Up</button>
+                    <p class="mt-2">Already have an account? Login <a onclick="showLoginForm()"
+                            href="javascript:void(0)">here</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

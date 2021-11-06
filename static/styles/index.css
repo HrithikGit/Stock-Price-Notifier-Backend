@@ -1,0 +1,92 @@
+:root{
+    --mint-cream : #F1F7ED;
+    --msu-green : #243E36;
+    --forest-green : #7CA982;
+    --nyanza : #E0EEC6;
+    --gold : #C2A83E;
+    --white: #fff;
+    --black : #212529;
+}
+
+*{
+    margin : 0;
+    padding : 0;
+    font-size : 16px;
+}
+.main{
+    min-height : 100vh;
+    width : 100% ;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(to right,#243e36d7,#7ca982d3),url("../images/stock__cover.jpg");
+    background-size: cover;
+    position : relative;
+}
+
+.main-content{
+    position : absolute;
+    top : 50%;
+    left : 50%;
+    color :var(--white);
+    transform : translate(-50%,-40%);
+    letter-spacing : 3px;
+    text-align : center;
+    text-transform : uppercase;
+}
+
+.sub-heading{
+    font-weight : 600;
+}
+.btn--white{
+    padding : 0.75rem 2rem !important;
+    background-color: var(--white) !important;
+    border-radius : 0.75rem !important;
+    text-align: center;
+}
+.btn:focus{
+    box-shadow: none !important;
+}
+.btn-icon{
+    width : 1rem;
+    height : 1rem;
+    margin-left : 0.5rem;
+}
+.btn--link{
+    text-decoration: none;
+    color : var(--black);
+}
+
+.dialog{
+    position : absolute;
+    top : 50%;
+    left : 50%;
+    width : 40%;
+    transform : translate(-50%,-50%);
+    background-color : var(--mint-cream);
+    padding : 2rem;
+    border-radius : 0.75rem;
+    transition : 1s ease all;
+}
+
+.w-50{
+    width : 50%;
+}
+
+.login-heading{
+    margin-bottom : 2rem;
+}
+
+.display-none{
+    display : none;
+}
+
+.form-display{
+    animation : 2s ease;
+}
+
+@media all and (max-width : 500px){
+    .dialog{
+        width : 100%;
+        padding : 1rem;
+    }
+}
