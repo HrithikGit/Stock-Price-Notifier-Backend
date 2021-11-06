@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, make_response
+from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import text
 from sqlalchemy.exc import IntegrityError
-from models import db, User, Stock, UserStock
 from functools import wraps
 import csv
 import jwt
@@ -14,13 +14,39 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'HRI$8934'
 CORS(app)
 
+db = SQLAlchemy(app)
 
-def init_db():
-    db.init_app(app)
-    db.app = app
-    # db.create_all()
-    # addAllStocks()
-    # db.session.commit()
+
+class User(db.Model):
+    __tablename__ = 'user'
+    user_id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(30))
+    phone = db.Column(db.String(50), unique=True)
+    password = db.Column(db.String(30))
+
+    def __repr__(self) -> str:
+        return self.name+' '+self.phone+' '+self.password
+
+
+class Stock(db.Model):
+    __tablename__ = 'stock'
+    stock_id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(30))
+    symbol = db.Column(db.String(30))
+    industry = db.Column(db.String(30))
+
+    def __repr__(self) -> str:
+        return f"{self.name} - {self.symbol}"
+
+
+class UserStock(db.Model):
+    __tablename__ = 'userStock'
+    user_stock_id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer)
+    stock_id = db.Column(db.Integer)
+
+    def __repr__(self) -> str:
+        return f"{self.user_id} - {self.stock_id}"
 
 
 def addAllStocks():
@@ -99,12 +125,12 @@ def register():
         user = User.query.filter_by(phone=phone).first()
 
         if(user is not None):
-            return jsonify({"status" : "error", "message": "User already exists"})
+            return jsonify({"status": "error", "message": "User already exists"})
 
         new_user = User(name=name, phone=phone, password=password)
         db.session.add(new_user)
         db.session.commit()
-        return jsonify({"status": "success" , "message": "User registered"})
+        return jsonify({"status": "success", "message": "User registered"})
 
 
 @app.route("/getStocksList", methods=["POST"])
@@ -204,5 +230,4 @@ def get_subscribed_stocks(current_user, page):
 
 
 if __name__ == "__main__":
-    init_db()
     app.run(debug=True)
