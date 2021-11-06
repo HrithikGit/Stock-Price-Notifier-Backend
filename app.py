@@ -144,12 +144,12 @@ def get_stocks_list(current_user):
     total_records = 0
 
     query_result = db.engine.execute(text(
-        "SELECT COUNT(*) FROM STOCK WHERE LOWER(SUBSTRING(NAME,1,:len)) = LOWER(:name)"), {'name': name, 'len': len(name)})
+        "SELECT COUNT(*) FROM STOCK WHERE LOWER(SUBSTR(NAME,1,:len)) = LOWER(:name)"), {'name': name, 'len': len(name)})
     for row in query_result:
         total_records = row[0]
 
     result = db.engine.execute(
-        text("SELECT * FROM STOCK WHERE LOWER(SUBSTRING(NAME,1,:len)) = LOWER(:name) LIMIT :limit OFFSET :offset").execution_options(autocommit=True), {'name': name, 'len': len(name), 'limit': limit, 'offset': offset})
+        text("SELECT * FROM STOCK WHERE LOWER(SUBSTR(NAME,1,:len)) = LOWER(:name) LIMIT :limit OFFSET :offset").execution_options(autocommit=True), {'name': name, 'len': len(name), 'limit': limit, 'offset': offset})
 
     stock_response_array = []
     for row in result:
